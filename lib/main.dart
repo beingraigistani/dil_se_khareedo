@@ -1,6 +1,7 @@
 import 'package:dil_se_khareedo/firebase_options.dart';
 import 'package:dil_se_khareedo/presentation/screens/splash_screen.dart';
 import 'package:dil_se_khareedo/presentation/state/authentication_provider.dart';
+import 'package:dil_se_khareedo/presentation/state/category_provider.dart';
 import 'package:dil_se_khareedo/presentation/state/user_provider.dart';
 import 'package:dil_se_khareedo/routes/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(create: (_) => AuthenticationProvider()),
         ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => CategoryProvider()),
+
 
 
       ],
