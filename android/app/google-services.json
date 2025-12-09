@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "349356316553",
+    "project_id": "dil-se-khareedo",
+    "storage_bucket": "dil-se-khareedo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349356316553:android:5670d7bfb775174bf8f358",
+        "android_client_info": {
+          "package_name": "com.example.dil_se_khareedo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLl5BkEtE0sxhsmqpV5vJSsWCjZvpJMfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
