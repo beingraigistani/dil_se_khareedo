@@ -1,5 +1,4 @@
-import 'package:dil_se_khareedo/data/models/user_model.dart';
-import 'package:dil_se_khareedo/data/repositories/user_repository.dart';
+import 'package:dil_se_khareedo/presentation/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:dil_se_khareedo/presentation/state/authentication_provider.dart';
@@ -16,6 +15,8 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmController = TextEditingController();
+  final name = TextEditingController();
+  final imageUrl = TextEditingController();
   bool _loading = false;
 
   @override
@@ -34,12 +35,11 @@ class _SignupScreenState extends State<SignupScreen> {
 
     setState(() => _loading = true);
     final auth = context.read<AuthenticationProvider>();
-    final error = await auth.register(email, password);
+    final error = await auth.register(email, password, name.text.trim(), imageUrl.text.trim());
     if (!mounted) return;
     setState(() => _loading = false);
 
     if (error == null) {
-      
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(const SnackBar(content: Text('Registration successful')));
@@ -65,6 +65,18 @@ class _SignupScreenState extends State<SignupScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  TextField(
+                    controller: name,
+                    decoration: const InputDecoration(labelText: "Full Name"),
+                  ),
+
+                  TextField(
+                    controller: imageUrl,
+                    decoration: const InputDecoration(
+                      labelText: "Profile Image URL (optional)",
+                    ),
+                  ),
+
                   TextFormField(
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
@@ -113,7 +125,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   const SizedBox(height: 20),
                   SizedBox(
                     width: double.infinity,
-                    child: ElevatedButton(
+                    child: AppButton(
                       onPressed: _loading ? null : _submit,
                       child: _loading
                           ? const SizedBox(

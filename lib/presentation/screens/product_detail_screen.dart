@@ -1,7 +1,9 @@
 import 'package:dil_se_khareedo/presentation/state/cart_provider.dart';
+import 'package:dil_se_khareedo/presentation/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../data/models/product_model.dart';
+import 'package:dil_se_khareedo/core/constants/app_text_styles.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({super.key});
@@ -19,18 +21,21 @@ class ProductDetailScreen extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Image.network(
-                product.image,
-                height: 250,
-                width: double.infinity,
-                fit: BoxFit.cover,
+              child: Hero(
+                tag: product.id,
+                child: Image.network(
+                  product.image,
+                  height: 250,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             const SizedBox(height: 20),
 
             Text(
               product.name,
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              style: AppTextStyles.heading,
             ),
 
             const SizedBox(height: 10),
@@ -52,7 +57,7 @@ class ProductDetailScreen extends StatelessWidget {
 
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(
+              child: AppButton(
                 onPressed: () {
                   context.read<CartProvider>().addToCart(product);
 
@@ -61,7 +66,7 @@ class ProductDetailScreen extends StatelessWidget {
                   );
                   print('Added to cart');
                 },
-                child: const Text("Add to Cart"),
+                child: Text("Add to Cart"),
               ),
             ),
           ],

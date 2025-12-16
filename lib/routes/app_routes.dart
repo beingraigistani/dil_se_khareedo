@@ -1,6 +1,6 @@
+import 'package:dil_se_khareedo/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../presentation/screens/splash_screen.dart';
 import '../presentation/screens/auth/login_screen.dart';
 import '../presentation/screens/auth/signup_screen.dart';
 import '../presentation/screens/home_screen.dart';
@@ -9,6 +9,7 @@ import '../presentation/screens/cart_screen.dart';
 import '../presentation/screens/checkout_screen.dart';
 import '../presentation/screens/orders_screen.dart';
 import '../presentation/screens/profile_screen.dart';
+import 'package:dil_se_khareedo/presentation/screens/edit_profile_screen.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -20,6 +21,7 @@ class AppRoutes {
   static const String checkout = '/checkout';
   static const String orders = '/orders';
   static const String profile = '/profile';
+  static const String editProfile = '/edit-profile';
 
   /// onGenerateRoute implementation that returns the registered screens.
   static Route<dynamic>? generateRoute(RouteSettings settings) {
@@ -69,6 +71,8 @@ class AppRoutes {
           settings: settings,
           builder: (context) => const ProfileScreen(),
         );
+        case editProfile:
+        return MaterialPageRoute<void>(settings: settings,builder: (context) => const EditProfileScreen());
       default:
         return MaterialPageRoute<void>(
           settings: settings,
@@ -91,6 +95,7 @@ class AppRoutes {
       checkout: (context) => const CheckoutScreen(),
       orders: (context) => const OrdersScreen(),
       profile: (context) => const ProfileScreen(),
+      editProfile: (context) => const EditProfileScreen(),
     };
   }
 }

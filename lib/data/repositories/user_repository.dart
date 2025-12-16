@@ -15,4 +15,10 @@ class UserRepository {
 
     return UserModel.fromMap(doc.data()!, uid);
   }
+  Future<void> updateUser(String uid, String name, String imageUrl) async {
+    await _db.collection('users').doc(uid).update({
+      'name': name,
+      'imageUrl': imageUrl,
+    });
+  }
 }

@@ -2,7 +2,10 @@ import 'package:flutter/foundation.dart';
 import '../../../data/models/product_model.dart';
 
 class CartProvider extends ChangeNotifier {
+  
   final Map<String, int> _items = {}; // productId : quantity
+  
+  
 
   Map<String, int> get items => _items;
 
@@ -35,3 +38,13 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 }
+class CartItem {
+  final ProductModel product;
+  int quantity;
+
+  CartItem({
+    required this.product,
+    this.quantity = 1,
+  });
+}
+

@@ -4,6 +4,8 @@ class ProductModel {
   final String description;
   final double price;
   final String image;
+  final String categoryId;
+
 
   ProductModel({
     required this.id,
@@ -11,6 +13,8 @@ class ProductModel {
     required this.description,
     required this.price,
     required this.image,
+    required this.categoryId,
+
   });
 
   factory ProductModel.fromMap(Map<String, dynamic> data, String documentId) {
@@ -20,6 +24,8 @@ class ProductModel {
       description: data['description'] ?? '',
       price: (data['price'] ?? 0).toDouble(),
       image: data['image'] ?? '',
+      categoryId: data['categoryId'] ?? '',
+
     );
   }
 
@@ -29,6 +35,8 @@ class ProductModel {
       'description': description,
       'price': price,
       'image': image,
+      'categoryId': categoryId,
+
     };
   }
 }
