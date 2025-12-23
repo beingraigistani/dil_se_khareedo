@@ -1,3 +1,6 @@
+import 'package:dil_se_khareedo/presentation/screens/admin/add_edit_product_screen.dart';
+import 'package:dil_se_khareedo/presentation/screens/admin/admin_dashboard_screen.dart';
+import 'package:dil_se_khareedo/presentation/screens/admin/product_list_admin_screen.dart';
 import 'package:dil_se_khareedo/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +25,10 @@ class AppRoutes {
   static const String orders = '/orders';
   static const String profile = '/profile';
   static const String editProfile = '/edit-profile';
+  static const adminDashboard = '/admin-dashboard';
+static const adminProducts = '/admin-products';
+static const addEditProduct = '/add-edit-product';
+
 
   /// onGenerateRoute implementation that returns the registered screens.
   static Route<dynamic>? generateRoute(RouteSettings settings) {
@@ -73,6 +80,13 @@ class AppRoutes {
         );
         case editProfile:
         return MaterialPageRoute<void>(settings: settings,builder: (context) => const EditProfileScreen());
+        case adminDashboard:
+        return MaterialPageRoute<void>(settings: settings,builder: (context) => const AdminDashboardScreen());
+        case adminProducts:
+        return MaterialPageRoute<void>(settings: settings,builder: (context) => const ProductListAdminScreen());
+        case addEditProduct:
+        return MaterialPageRoute<void>(settings: settings,builder: (context) => const AddEditProductScreen());
+
       default:
         return MaterialPageRoute<void>(
           settings: settings,

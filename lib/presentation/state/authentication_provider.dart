@@ -39,6 +39,7 @@ class AuthenticationProvider extends ChangeNotifier {
           email: user.email ?? "",
           name: name,
           imageUrl: imageUrl,
+          role: 'user',
         ),
       );
     }

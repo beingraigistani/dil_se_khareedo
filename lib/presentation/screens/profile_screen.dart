@@ -4,6 +4,7 @@ import 'package:dil_se_khareedo/presentation/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../presentation/state/user_provider.dart';
+import 'package:dil_se_khareedo/routes/app_routes.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -56,6 +57,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     style: const TextStyle(fontSize: 18),
                   ),
                   const SizedBox(height: 30),
+
+                  if (user.role == 'admin')
+                    ListTile(
+                      leading: const Icon(Icons.admin_panel_settings),
+                      title: const Text("Admin Panel"),
+                      onTap: () {
+                        Navigator.pushNamed(context, AppRoutes.adminDashboard);
+                      },
+                    ),
+
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pushNamed(context, "/orders");
@@ -63,6 +74,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: const Text("My Orders"),
                   ),
                   const SizedBox(height: 10),
+                  
                   ElevatedButton(
                     onPressed: () async {
                       await context.read<AuthenticationProvider>().logout();

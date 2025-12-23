@@ -33,7 +33,7 @@ class ProductCard extends StatelessWidget {
               child: Hero(
                 tag: product.id,
                 child: Image.network(
-                  product.image,
+                  product.imageUrl,
                   height: 150,
                   width: double.infinity,
                   fit: BoxFit.cover,

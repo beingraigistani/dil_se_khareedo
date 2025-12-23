@@ -9,18 +9,29 @@ class CategoryProvider extends ChangeNotifier {
   String selectedCategory = '';
 
   Future<void> fetchCategories() async {
+    print('Fetching categories Start');
     loading = true;
     notifyListeners();
 
     categories = await _repo.getCategories();
+    print('Fetched categories: ${categories.length}');
 
     loading = false;
     notifyListeners();
+    print('Fetching categories End');
+  }
+
+  Future<String> addCategory(String name, String imageUrl) async {
+    final docRef = await _repo.addCategory(name, imageUrl);
+    await fetchCategories();
+    selectedCategory = docRef.id; 
+    notifyListeners();
+    return docRef.id;
   }
 
   void selectCategory(String categoryId) {
     selectedCategory = categoryId;
-     print('Selected categoryId: $categoryId');
+    print('Selected categoryId: $categoryId');
     notifyListeners();
   }
 

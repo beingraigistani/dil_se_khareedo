@@ -21,4 +21,16 @@ class OrderModel {
       'createdAt': createdAt.toIso8601String(),
     };
   }
+
+  factory OrderModel.fromMap(Map<String, dynamic> data, String id) {
+    return OrderModel(
+      id: id,
+      items: List<Map<String, dynamic>>.from(data['items'] ?? []),
+      total: (data['total'] ?? 0).toDouble(),
+      userId: data['userId'] ?? '',
+      createdAt: DateTime.parse(
+        data['createdAt'] ?? DateTime.now().toIso8601String(),
+      ),
+    );
+  }
 }

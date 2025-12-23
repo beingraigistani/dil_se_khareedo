@@ -28,7 +28,7 @@ class CartScreen extends StatelessWidget {
                 final quantity = cartItems[index]['quantity'] as int;
 
                 return ListTile(
-                  leading: Image.network(product.image, width: 50, height: 50),
+                  leading: Image.network(product.imageUrl, width: 50, height: 50),
                   title: Text(product.name),
                   subtitle: Text("Qty: $quantity"),
                   trailing: Row(

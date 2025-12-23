@@ -32,7 +32,7 @@ class CheckoutScreen extends StatelessWidget {
       return {
         'productId': product.id,
         'name': product.name,
-        'image': product.image,
+        'image': product.imageUrl,
         'price': product.price,
         'quantity': quantity,
         'subtotal': subtotal,

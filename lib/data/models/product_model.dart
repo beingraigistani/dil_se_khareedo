@@ -3,7 +3,7 @@ class ProductModel {
   final String name;
   final String description;
   final double price;
-  final String image;
+  final String imageUrl;
   final String categoryId;
 
 
@@ -12,7 +12,7 @@ class ProductModel {
     required this.name,
     required this.description,
     required this.price,
-    required this.image,
+    required this.imageUrl,
     required this.categoryId,
 
   });
@@ -23,7 +23,7 @@ class ProductModel {
       name: data['name'] ?? '',
       description: data['description'] ?? '',
       price: (data['price'] ?? 0).toDouble(),
-      image: data['image'] ?? '',
+      imageUrl: data['imageUrl'] ?? '',
       categoryId: data['categoryId'] ?? '',
 
     );
@@ -34,7 +34,7 @@ class ProductModel {
       'name': name,
       'description': description,
       'price': price,
-      'image': image,
+      'imageUrl': imageUrl,
       'categoryId': categoryId,
 
     };

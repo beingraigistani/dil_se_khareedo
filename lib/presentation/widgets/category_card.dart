@@ -7,56 +7,59 @@ class CategoryCard extends StatelessWidget {
   final CategoryModel category;
   final VoidCallback onTap;
 
-  const CategoryCard({
-    super.key,
-    required this.category,
-    required this.onTap,
-  });
+  const CategoryCard({super.key, required this.category, required this.onTap});
 
   @override
- @override
-Widget build(BuildContext context) {
-  return Consumer<CategoryProvider>(
-    builder: (context, provider, _) {
-      final isSelected = provider.selectedCategory == category.id;
+  Widget build(BuildContext context) {
+    return Consumer<CategoryProvider>(
+      builder: (context, provider, _) {
+        final isSelected = provider.selectedCategory == category.id;
 
-      return GestureDetector(
-        onTap: onTap,
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(3),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: isSelected ? Colors.green : Colors.transparent,
-                  width: 2,
+        return GestureDetector(
+          onTap: onTap,
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(3),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: isSelected ? Colors.green : Colors.transparent,
+                    width: 2,
+                  ),
+                  borderRadius: BorderRadius.circular(14),
                 ),
-                borderRadius: BorderRadius.circular(14),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image.network(
-                  category.image,
-                  width: 70,
-                  height: 70,
-                  fit: BoxFit.cover,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: category.imageUrl.isNotEmpty
+                      ? Image.network(
+                          category.imageUrl,
+                          width: 70,
+                          height: 70,
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, __, ___) =>
+                              const Icon(Icons.broken_image),
+                        )
+                      : Container(
+                          width: 70,
+                          height: 70,
+                          color: Colors.grey.shade200,
+                          child: const Icon(Icons.category),
+                        ),
                 ),
               ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              category.name,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                color: isSelected ? Colors.green : Colors.black,
+              const SizedBox(height: 6),
+              Text(
+                category.name,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: isSelected ? Colors.green : Colors.black,
+                ),
               ),
-            ),
-          ],
-        ),
-      );
-    },
-  );
-}
-
+            ],
+          ),
+        );
+      },
+    );
+  }
 }

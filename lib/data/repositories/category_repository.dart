@@ -10,4 +10,11 @@ class CategoryRepository {
         .map((d) => CategoryModel.fromMap(d.data(), d.id))
         .toList();
   }
+
+  Future<DocumentReference> addCategory(String name, String imageUrl) async {
+    return await _db.collection('categories').add({
+      'name': name,
+      'imageUrl': imageUrl,
+    });
+  }
 }
